@@ -1,0 +1,21 @@
+### EXECUTE ALL THE STEPS IN "git-bash" RUNNING AS ADMINISTRATOR.
+
+STEP 1) --> COPY GITHUB REPO.
+
+STEP 2) --> NVM USE 16.
+
+STEP 3) --> COPY ".metamaskrc.dist" To ".metamaskrc" & PASTE VALUE OF "INFURA_PROJECT_ID".
+
+STEP 4) --> RUN "yarn setup"
+
+STEP 5) --> MAKE SURE TO REPLACE "config.js" in "/development/build"
+
+STEP 6) --> MAKE A PRODUCTION BUILD BY EXECUTING "node development/build/index.js prod"
+
+--> If launching a testing enviroment using yarn start, make sure to add "runtime-cjs.js"
+
+STEP 7) --> AFTER STEP 6, THERE WILL BE A "builds" DIRECTORY IN ROOT FOLDER OF PROJECT. COPY THE BUILD ZIP FOR PARTICULAR BROWSER AND UNZIP SOMEWHERE ELSE.
+
+STEP 8) --> PASTE "runtime-lavamoat.js" IN ROOT LOCATION OF UNZIPPED FOLDER OF PARTICULAR BROWSER.
+
+STEP 9) --> SETUP IS READY.
