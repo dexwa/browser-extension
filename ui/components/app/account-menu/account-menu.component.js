@@ -8,7 +8,6 @@ import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import {
   EVENT,
   EVENT_NAMES,
-  CONTEXT_PROPS,
 } from '../../../../shared/constants/metametrics';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
@@ -16,7 +15,6 @@ import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 import {
   PRIMARY,
-  SUPPORT_LINK,
   ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
   SUPPORT_REQUEST_LINK,
   ///: END:ONLY_INCLUDE_IN
@@ -26,6 +24,7 @@ import {
   NEW_ACCOUNT_ROUTE,
   IMPORT_ACCOUNT_ROUTE,
   CONNECT_HARDWARE_ROUTE,
+  IMPORT_TOKEN_ROUTE,
   DEFAULT_ROUTE,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   NOTIFICATIONS_ROUTE,
@@ -33,7 +32,6 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import IconCheck from '../../ui/icon/icon-check';
-import IconSpeechBubbles from '../../ui/icon/icon-speech-bubbles';
 import IconConnect from '../../ui/icon/icon-connect';
 import IconCog from '../../ui/icon/icon-cog';
 import IconPlus from '../../ui/icon/icon-plus';
@@ -318,8 +316,6 @@ export default class AccountMenu extends Component {
       return null;
     }
 
-    let supportText = t('support');
-    let supportLink = SUPPORT_LINK;
     ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
     supportText = t('needHelpSubmitTicket');
     supportLink = SUPPORT_REQUEST_LINK;
@@ -400,6 +396,27 @@ export default class AccountMenu extends Component {
               category: EVENT.CATEGORIES.NAVIGATION,
               event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
               properties: {
+                account_type: EVENT.ACCOUNT_TYPES.IMPORTED,
+                location: 'Main Menu',
+              },
+            });
+            history.push(IMPORT_TOKEN_ROUTE);
+          }}
+          icon={
+            <IconImport
+              color="var(--color-icon-alternative)"
+              ariaLabel={t('importTokens')}
+            />
+          }
+          text={t('importTokens')}
+        />
+        <AccountMenuItem
+          onClick={() => {
+            toggleAccountMenu();
+            trackEvent({
+              category: EVENT.CATEGORIES.NAVIGATION,
+              event: EVENT_NAMES.ACCOUNT_ADD_SELECTED,
+              properties: {
                 account_type: EVENT.ACCOUNT_TYPES.HARDWARE,
                 location: 'Main Menu',
               },
@@ -443,30 +460,6 @@ export default class AccountMenu extends Component {
           </>
           ///: END:ONLY_INCLUDE_IN
         }
-        <AccountMenuItem
-          onClick={() => {
-            trackEvent(
-              {
-                category: EVENT.CATEGORIES.NAVIGATION,
-                event: EVENT_NAMES.SUPPORT_LINK_CLICKED,
-                properties: {
-                  url: supportLink,
-                },
-              },
-              {
-                contextPropsIntoEventProperties: [CONTEXT_PROPS.PAGE_TITLE],
-              },
-            );
-            global.platform.openTab({ url: supportLink });
-          }}
-          icon={
-            <IconSpeechBubbles
-              color="var(--color-icon-alternative)"
-              ariaLabel={supportText}
-            />
-          }
-          text={supportText}
-        />
 
         <AccountMenuItem
           onClick={() => {

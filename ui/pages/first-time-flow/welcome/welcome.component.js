@@ -33,23 +33,30 @@ export default class Welcome extends PureComponent {
   componentDidMount() {
     const {
       history,
-      participateInMetaMetrics,
-      welcomeScreenSeen,
+      // participateInMetaMetrics,
+      // welcomeScreenSeen,
       isInitialized,
     } = this.props;
 
-    if (
-      welcomeScreenSeen &&
-      isInitialized &&
-      participateInMetaMetrics !== null
-    ) {
-      history.push(INITIALIZE_CREATE_PASSWORD_ROUTE);
-    } else if (welcomeScreenSeen && participateInMetaMetrics !== null) {
-      history.push(INITIALIZE_SELECT_ACTION_ROUTE);
-    } else if (welcomeScreenSeen) {
-      history.push(INITIALIZE_METAMETRICS_OPT_IN_ROUTE);
-    }
-  }
+  //   if (
+  //     welcomeScreenSeen &&
+  //     isInitialized &&
+  //     participateInMetaMetrics !== null
+  //   ) {
+  //     history.push(INITIALIZE_CREATE_PASSWORD_ROUTE);
+  //   } else if (welcomeScreenSeen && participateInMetaMetrics !== null) {
+  //     history.push(INITIALIZE_SELECT_ACTION_ROUTE);
+  //   } else if (welcomeScreenSeen) {
+  //     history.push(INITIALIZE_METAMETRICS_OPT_IN_ROUTE);
+  //   }
+  // }
+
+  if (isInitialized !== null) {
+    history.push(INITIALIZE_SELECT_ACTION_ROUTE)
+  } else {
+    history.push(INITIALIZE_CREATE_PASSWORD_ROUTE)
+  };
+}
 
   handleContinue = () => {
     this.props.history.push(INITIALIZE_METAMETRICS_OPT_IN_ROUTE);

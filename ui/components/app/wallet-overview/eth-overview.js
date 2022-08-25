@@ -110,14 +110,14 @@ const EthOverview = ({ className }) => {
             label={t('receive')}
             onClick={() => {
               trackEvent({
-                event: EVENT_NAMES.NAV_BUY_BUTTON_CLICKED,
+                event: EVENT_NAMES.NAV_ACCOUNT_DETAILS_OPENED,
                 category: EVENT.CATEGORIES.NAVIGATION,
                 properties: {
-                  location: 'Home',
+                  location: 'Account Options',
                   text: 'Buy',
                 },
               });
-              dispatch(showModal({ name: 'DEPOSIT_ETHER' }));
+              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
             }}
           />
           <IconButton

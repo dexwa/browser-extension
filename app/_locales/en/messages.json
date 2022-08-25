@@ -1937,7 +1937,7 @@
     "message": "The connection status button shows if the website you’re visiting is connected to your currently selected account."
   },
   "dexwalletDescription": {
-    "message": "Connecting you to Ethereum and the Decentralized Web."
+    "message": "Connecting you to Ethereum and the Decentralized Web. xx"
   },
   "dexwalletSwapsOfflineDescription": {
     "message": "DexWallet Swaps is undergoing maintenance. Please check back later."

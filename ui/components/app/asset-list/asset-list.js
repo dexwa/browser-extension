@@ -100,7 +100,7 @@ const AssetList = ({ onClickAsset }) => {
         !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
           <DetectedTokensLink setShowDetectedTokens={setShowDetectedTokens} />
         )}
-      <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
+      {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
         <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
           <Typography
             color={COLORS.TEXT_ALTERNATIVE}
@@ -111,7 +111,7 @@ const AssetList = ({ onClickAsset }) => {
           </Typography>
         </Box>
         <ImportTokenLink />
-      </Box>
+      </Box> */}
       {showDetectedTokens && (
         <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
       )}

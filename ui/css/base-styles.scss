@@ -52,7 +52,7 @@ html {
   background: var(--color-background-alternative);
 
   @include screen-sm-max {
-    background-color: var(--color-background-default);
+    background-color: var(--color-background-alternative);
   }
 }
 /* stylelint-enable */
