@@ -222,8 +222,10 @@ export default class SelectAction extends PureComponent {
             <div className="select-action__body-header"> 
             <div className="select-action__body-header"></div>
             <div className="select-action__body-header"></div>
-            <div className="select-action__body-header"></div>
-              {t('newToDexWallet')}
+            <div className="select-action__body-header">
+              <img src='./images/logo/metamask-fox.svg' width='120px' height='120px' />
+            </div>
+              {/* {t('newToDexWallet')} */}
               <div className="select-action__body-header"></div>
               <Button
                   type="primary"

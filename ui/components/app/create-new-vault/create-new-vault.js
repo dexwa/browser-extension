@@ -87,7 +87,7 @@ export default function CreateNewVault({
     <a
       className="create-new-vault__terms-link"
       key="create-new-vault__link-text"
-      href="https://metamask.io/terms.html"
+      href="https://dexwallet.com/terms.html"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -138,6 +138,7 @@ export default function CreateNewVault({
           </label>
         </div>
       ) : null}
+      <div className='submit-btn-container'>
       <Button
         className="create-new-vault__submit-button"
         type="primary"
@@ -146,6 +147,7 @@ export default function CreateNewVault({
       >
         {submitText}
       </Button>
+      </div>
     </form>
   );
 }

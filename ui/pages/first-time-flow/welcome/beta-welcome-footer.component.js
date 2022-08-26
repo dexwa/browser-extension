@@ -11,10 +11,10 @@ const BetaWelcomeFooter = () => {
         <p>{t('betaDexwalletDescription')}</p>
         <p>
           {t('betaDexwalletDescriptionExplanation', [
-            <a href="https://metamask.io/terms.html" key="terms-link">
+            <a href="https://dexwallet.com/terms.html" key="terms-link">
               {t('betaDexwalletDescriptionExplanationTermsLinkText')}
             </a>,
-            <a href="https://metamask.io/beta-terms.html" key="beta-terms-link">
+            <a href="https://dexwallet.com/beta-terms.html" key="beta-terms-link">
               {t('betaDexwalletDescriptionExplanationBetaTermsLinkText')}
             </a>,
           ])}

@@ -21,12 +21,10 @@ import {
   CONTACT_ADD_ROUTE,
   CONTACT_EDIT_ROUTE,
   CONTACT_VIEW_ROUTE,
-  EXPERIMENTAL_ROUTE,
   ADD_NETWORK_ROUTE,
   ADD_POPULAR_CUSTOM_NETWORK,
 } from '../../helpers/constants/routes';
 
-import { getSettingsRoutes } from '../../helpers/utils/settings-search';
 import AddNetwork from '../../components/app/add-network/add-network';
 import SettingsTab from './settings-tab';
 import AlertsTab from './alerts-tab';
@@ -35,13 +33,10 @@ import AdvancedTab from './advanced-tab';
 import InfoTab from './info-tab';
 import SecurityTab from './security-tab';
 import ContactListTab from './contact-list-tab';
-import ExperimentalTab from './experimental-tab';
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import SnapListTab from './flask/snaps-list-tab';
 import ViewSnap from './flask/view-snap';
 ///: END:ONLY_INCLUDE_IN
-import SettingsSearch from './settings-search';
-import SettingsSearchList from './settings-search-list';
 
 class SettingsPage extends PureComponent {
   static propTypes = {
@@ -66,10 +61,7 @@ class SettingsPage extends PureComponent {
   };
 
   state = {
-    isSearchList: false,
     lastFetchedConversionDate: null,
-    searchResults: [],
-    searchText: '',
   };
 
   componentDidMount() {
@@ -90,10 +82,6 @@ class SettingsPage extends PureComponent {
   handleClickSetting(setting) {
     const { history } = this.props;
     history.push(setting.route);
-    this.setState({
-      isSearchList: '',
-      searchResults: '',
-    });
   }
 
   render() {
@@ -106,7 +94,6 @@ class SettingsPage extends PureComponent {
       isSnapViewPage,
     } = this.props;
 
-    const { searchResults, isSearchList, searchText } = this.state;
 
     return (
       <div
@@ -136,25 +123,6 @@ class SettingsPage extends PureComponent {
                 }
               }}
             />
-          </div>
-
-          <div className="settings-page__header__search">
-            <SettingsSearch
-              onSearch={({ searchQuery = '', results = [] }) => {
-                this.setState({
-                  isSearchList: searchQuery !== '',
-                  searchResults: results,
-                  searchText: searchQuery,
-                });
-              }}
-              settingsRoutesList={getSettingsRoutes()}
-            />
-            {isSearchList && searchText.length >= 3 && (
-              <SettingsSearchList
-                results={searchResults}
-                onClickSetting={(setting) => this.handleClickSetting(setting)}
-              />
-            )}
           </div>
         </div>
 
@@ -296,11 +264,11 @@ class SettingsPage extends PureComponent {
             icon: <i className="fa fa-plug" />,
             key: NETWORKS_ROUTE,
           },
-          {
-            content: t('experimental'),
-            icon: <i className="fa fa-flask" />,
-            key: EXPERIMENTAL_ROUTE,
-          },
+          // {
+          //   content: t('experimental'),
+          //   icon: <i className="fa fa-flask" />,
+          //   key: EXPERIMENTAL_ROUTE,
+          // },
           {
             content: t('about'),
             icon: <i className="fa fa-info-circle" />,
@@ -350,7 +318,7 @@ class SettingsPage extends PureComponent {
           render={() => <AddNetwork />}
         />
         <Route exact path={SECURITY_ROUTE} component={SecurityTab} />
-        <Route exact path={EXPERIMENTAL_ROUTE} component={ExperimentalTab} />
+        {/* <Route exact path={EXPERIMENTAL_ROUTE} component={ExperimentalTab} /> */}
         <Route exact path={CONTACT_LIST_ROUTE} component={ContactListTab} />
         <Route exact path={CONTACT_ADD_ROUTE} component={ContactListTab} />
         <Route

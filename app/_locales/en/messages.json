@@ -2131,7 +2131,7 @@
     "message": "New address detected! Click here to add to your address book."
   },
   "newAccountNumberName": {
-    "message": "Account $1",
+    "message": "Address $1",
     "description": "Default name of next account to be created on create account screen"
   },
   "newCollectibleAddedMessage": {

@@ -67,7 +67,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[3]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/terms.html"
+            href="https://dexwallet.com/terms.html"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"

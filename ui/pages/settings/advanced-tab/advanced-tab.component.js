@@ -20,8 +20,7 @@ import {
   LEDGER_TRANSPORT_TYPES,
   LEDGER_USB_VENDOR_ID,
 } from '../../../../shared/constants/hardware-wallets';
-import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
-import { exportAsFile } from '../../../../shared/modules/export-utils';
+import { EVENT} from '../../../../shared/constants/metametrics';
 import ActionableMessage from '../../../components/ui/actionable-message';
 
 export default class AdvancedTab extends PureComponent {
@@ -237,84 +236,6 @@ export default class AdvancedTab extends PureComponent {
     );
   }
 
-  renderStateLogs() {
-    const { t } = this.context;
-    const { displayWarning } = this.props;
-
-    return (
-      <div
-        ref={this.settingsRefs[0]}
-        className="settings-page__content-row"
-        data-testid="advanced-setting-state-logs"
-      >
-        <div className="settings-page__content-item">
-          <span>{t('stateLogs')}</span>
-          <span className="settings-page__content-description">
-            {t('stateLogsDescription')}
-          </span>
-        </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <Button
-              type="secondary"
-              large
-              onClick={() => {
-                window.logStateString((err, result) => {
-                  if (err) {
-                    displayWarning(t('stateLogError'));
-                  } else {
-                    exportAsFile(`${t('stateLogFileName')}.json`, result);
-                  }
-                });
-              }}
-            >
-              {t('downloadStateLogs')}
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  renderResetAccount() {
-    const { t } = this.context;
-    const { showResetAccountConfirmationModal } = this.props;
-
-    return (
-      <div
-        ref={this.settingsRefs[2]}
-        className="settings-page__content-row"
-        data-testid="advanced-setting-reset-account"
-      >
-        <div className="settings-page__content-item">
-          <span>{t('resetAccount')}</span>
-          <span className="settings-page__content-description">
-            {t('resetAccountDescription')}
-          </span>
-        </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <Button
-              type="danger"
-              large
-              className="settings-tab__button--red"
-              onClick={(event) => {
-                event.preventDefault();
-                this.context.trackEvent({
-                  category: EVENT.CATEGORIES.SETTINGS,
-                  event: EVENT_NAMES.ACCOUNT_RESET,
-                  properties: {},
-                });
-                showResetAccountConfirmationModal();
-              }}
-            >
-              {t('resetAccount')}
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   renderHexDataOptIn() {
     const { t } = this.context;
@@ -833,9 +754,6 @@ export default class AdvancedTab extends PureComponent {
     return (
       <div className="settings-page__body">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
-        {this.renderStateLogs()}
-        {this.renderMobileSync()}
-        {this.renderResetAccount()}
         {this.renderAdvancedGasInputInline()}
         {this.renderTokenDetectionToggle()}
         {this.renderHexDataOptIn()}

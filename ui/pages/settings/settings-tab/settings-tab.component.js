@@ -112,7 +112,7 @@ export default class SettingsTab extends PureComponent {
     const currentLocaleMeta = locales.find(
       (locale) => locale.code === currentLocale,
     );
-    const currentLocaleName = currentLocaleMeta ? currentLocaleMeta.name : '';
+    // const currentLocaleName = currentLocaleMeta ? currentLocaleMeta.name : '';
 
     return (
       <div ref={this.settingsRefs[2]} className="settings-page__content-row">
@@ -120,9 +120,9 @@ export default class SettingsTab extends PureComponent {
           <span className="settings-page__content-label">
             {t('currentLanguage')}
           </span>
-          <span className="settings-page__content-description">
+          {/* <span className="settings-page__content-description">
             {currentLocaleName}
-          </span>
+          </span> */}
         </div>
         <div className="settings-page__content-item">
           <div className="settings-page__content-item-col">
@@ -165,102 +165,102 @@ export default class SettingsTab extends PureComponent {
     );
   }
 
-  renderBlockieOptIn() {
-    const { t } = this.context;
-    const { useBlockie, setUseBlockie, selectedAddress, tokenList } =
-      this.props;
+  // renderBlockieOptIn() {
+  //   const { t } = this.context;
+  //   const { useBlockie, setUseBlockie, selectedAddress, tokenList } =
+  //     this.props;
 
-    const getIconStyles = () => ({
-      display: 'block',
-      borderRadius: '0px',
-      width: '32px',
-      height: '32px',
-    });
+  //   const getIconStyles = () => ({
+  //     display: 'block',
+  //     borderRadius: '0px',
+  //     width: '32px',
+  //     height: '32px',
+  //   });
 
-    return (
-      <div
-        ref={this.settingsRefs[3]}
-        className="settings-page__content-row"
-        id="blockie-optin"
-      >
-        <div className="settings-page__content-item">
-          <Typography variant={TYPOGRAPHY.H5} color={COLORS.TEXT_DEFAULT}>
-            {t('accountIdenticon')}
-          </Typography>
-          <span className="settings-page__content-item__description">
-            {t('jazzAndBlockies')}
-          </span>
-          <div className="settings-page__content-item__identicon">
-            <button
-              data-test-id="jazz_icon"
-              onClick={() => setUseBlockie(false)}
-              className="settings-page__content-item__identicon__item"
-            >
-              <div
-                className={classnames(
-                  'settings-page__content-item__identicon__item__icon',
-                  {
-                    'settings-page__content-item__identicon__item__icon--active':
-                      !useBlockie,
-                  },
-                )}
-              >
-                <Jazzicon
-                  id="jazzicon"
-                  address={selectedAddress}
-                  diameter={32}
-                  tokenList={tokenList}
-                  style={getIconStyles()}
-                />
-              </div>
-              <Typography
-                color={COLORS.TEXT_DEFAULT}
-                variant={TYPOGRAPHY.H7}
-                marginTop={0}
-                marginRight={12}
-                marginBottom={0}
-                marginLeft={3}
-              >
-                {t('jazzicons')}
-              </Typography>
-            </button>
-            <button
-              data-test-id="blockie_icon"
-              onClick={() => setUseBlockie(true)}
-              className="settings-page__content-item__identicon__item"
-            >
-              <div
-                className={classnames(
-                  'settings-page__content-item__identicon__item__icon',
-                  {
-                    'settings-page__content-item__identicon__item__icon--active':
-                      useBlockie,
-                  },
-                )}
-              >
-                <BlockieIdenticon
-                  id="blockies"
-                  address={selectedAddress}
-                  diameter={32}
-                  borderRadius="0"
-                />
-              </div>
-              <Typography
-                color={COLORS.TEXT_DEFAULT}
-                variant={TYPOGRAPHY.H7}
-                marginTop={3}
-                marginRight={0}
-                marginBottom={3}
-                marginLeft={3}
-              >
-                {t('blockies')}
-              </Typography>
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  //   return (
+  //     <div
+  //       ref={this.settingsRefs[3]}
+  //       className="settings-page__content-row"
+  //       id="blockie-optin"
+  //     >
+  //       <div className="settings-page__content-item">
+  //         <Typography variant={TYPOGRAPHY.H5} color={COLORS.TEXT_DEFAULT}>
+  //           {t('accountIdenticon')}
+  //         </Typography>
+  //         <span className="settings-page__content-item__description">
+  //           {t('jazzAndBlockies')}
+  //         </span>
+  //         <div className="settings-page__content-item__identicon">
+  //           <button
+  //             data-test-id="jazz_icon"
+  //             onClick={() => setUseBlockie(false)}
+  //             className="settings-page__content-item__identicon__item"
+  //           >
+  //             <div
+  //               className={classnames(
+  //                 'settings-page__content-item__identicon__item__icon',
+  //                 {
+  //                   'settings-page__content-item__identicon__item__icon--active':
+  //                     !useBlockie,
+  //                 },
+  //               )}
+  //             >
+  //               <Jazzicon
+  //                 id="jazzicon"
+  //                 address={selectedAddress}
+  //                 diameter={32}
+  //                 tokenList={tokenList}
+  //                 style={getIconStyles()}
+  //               />
+  //             </div>
+  //             <Typography
+  //               color={COLORS.TEXT_DEFAULT}
+  //               variant={TYPOGRAPHY.H7}
+  //               marginTop={0}
+  //               marginRight={12}
+  //               marginBottom={0}
+  //               marginLeft={3}
+  //             >
+  //               {t('jazzicons')}
+  //             </Typography>
+  //           </button>
+  //           <button
+  //             data-test-id="blockie_icon"
+  //             onClick={() => setUseBlockie(true)}
+  //             className="settings-page__content-item__identicon__item"
+  //           >
+  //             <div
+  //               className={classnames(
+  //                 'settings-page__content-item__identicon__item__icon',
+  //                 {
+  //                   'settings-page__content-item__identicon__item__icon--active':
+  //                     useBlockie,
+  //                 },
+  //               )}
+  //             >
+  //               <BlockieIdenticon
+  //                 id="blockies"
+  //                 address={selectedAddress}
+  //                 diameter={32}
+  //                 borderRadius="0"
+  //               />
+  //             </div>
+  //             <Typography
+  //               color={COLORS.TEXT_DEFAULT}
+  //               variant={TYPOGRAPHY.H7}
+  //               marginTop={3}
+  //               marginRight={0}
+  //               marginBottom={3}
+  //               marginLeft={3}
+  //             >
+  //               {t('blockies')}
+  //             </Typography>
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   renderUsePrimaryCurrencyOptions() {
     const { t } = this.context;
@@ -326,10 +326,10 @@ export default class SettingsTab extends PureComponent {
     return (
       <div className="settings-page__body">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
+        {this.renderCurrentLocale()}
         {this.renderCurrentConversion()}
         {this.renderUsePrimaryCurrencyOptions()}
-        {this.renderCurrentLocale()}
-        {this.renderBlockieOptIn()}
+        {/* {this.renderBlockieOptIn()} */}
         {this.renderHideZeroBalanceTokensOptIn()}
       </div>
     );

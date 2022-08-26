@@ -19,7 +19,7 @@ import {
 } from '../../../shared/constants/metametrics';
 import { SECOND } from '../../../shared/constants/time';
 
-const EXTENSION_UNINSTALL_URL = 'https://metamask.io/uninstalled';
+// const EXTENSION_UNINSTALL_URL = 'https://metamask.io/uninstalled';
 
 const defaultCaptureException = (err) => {
   // throw error on clean stack so its captured by platform integrations (eg sentry)
@@ -339,11 +339,11 @@ export default class MetaMetricsController {
     const queryString = new URLSearchParams(query);
 
     // this.extension not currently defined in tests
-    if (this.extension && this.extension.runtime) {
-      this.extension.runtime.setUninstallURL(
-        `${EXTENSION_UNINSTALL_URL}?${queryString}`,
-      );
-    }
+    // if (this.extension && this.extension.runtime) {
+    //   this.extension.runtime.setUninstallURL(
+    //     `${EXTENSION_UNINSTALL_URL}?${queryString}`,
+    //   );
+    // }
   }
 
   /**

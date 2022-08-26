@@ -50,20 +50,6 @@ export const SETTINGS_CONSTANTS = [
   },
   {
     tabMessage: (t) => t('advanced'),
-    sectionMessage: (t) => t('stateLogs'),
-    descriptionMessage: (t) => t('stateLogsDescription'),
-    route: `${ADVANCED_ROUTE}#state-logs`,
-    icon: 'fas fa-sliders-h',
-  },
-  {
-    tabMessage: (t) => t('advanced'),
-    sectionMessage: (t) => t('syncWithMobile'),
-    descriptionMessage: (t) => t('syncWithMobile'),
-    route: `${ADVANCED_ROUTE}#sync-withmobile`,
-    icon: 'fas fa-sliders-h',
-  },
-  {
-    tabMessage: (t) => t('advanced'),
     sectionMessage: (t) => t('resetAccount'),
     descriptionMessage: (t) => t('resetAccountDescription'),
     route: `${ADVANCED_ROUTE}#reset-account`,

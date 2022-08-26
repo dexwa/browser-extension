@@ -82,32 +82,6 @@ export default class SecurityTab extends PureComponent {
     );
   }
 
-  renderMetaMetricsOptIn() {
-    const { t } = this.context;
-    const { participateInMetaMetrics, setParticipateInMetaMetrics } =
-      this.props;
-
-    return (
-      <div ref={this.settingsRefs[3]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('participateInDexMetrics')}</span>
-          <div className="settings-page__content-description">
-            <span>{t('participateInDexMetricsDescription')}</span>
-          </div>
-        </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={participateInMetaMetrics}
-              onToggle={(value) => setParticipateInMetaMetrics(!value)}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   renderIncomingTransactionsOptIn() {
     const { t } = this.context;
@@ -173,7 +147,6 @@ export default class SecurityTab extends PureComponent {
         {this.renderSeedWords()}
         {this.renderIncomingTransactionsOptIn()}
         {this.renderPhishingDetectionToggle()}
-        {this.renderMetaMetricsOptIn()}
       </div>
     );
   }
