@@ -229,7 +229,7 @@ class SettingsPage extends PureComponent {
           },
           {
             content: t('advanced'),
-            icon: <i className="fas fa-sliders-h" />,
+            icon: <i className="fas fa-screwdriver-wrench" />,
             key: ADVANCED_ROUTE,
           },
           {
