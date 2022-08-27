@@ -14,7 +14,7 @@ import Box from '../../components/ui/box';
 import ConnectedSites from '../connected-sites';
 import ConnectedAccounts from '../connected-accounts';
 import { Tabs, Tab } from '../../components/ui/tabs';
-import { EthOverview } from '../../components/app/wallet-overview';
+import { EthOverview, EthButtonsOverview } from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
 import ActionableMessage from '../../components/ui/actionable-message/actionable-message';
@@ -672,6 +672,7 @@ export default class Home extends PureComponent {
               </Tab>
             </Tabs>
             <div className="home__support">
+            <EthButtonsOverview />
               {
                 ///: BEGIN:ONLY_INCLUDE_IN(main)
                 // t('needHelp', [

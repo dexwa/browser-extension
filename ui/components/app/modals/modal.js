@@ -22,7 +22,6 @@ import TransactionConfirmed from './transaction-confirmed';
 import CancelTransaction from './cancel-transaction';
 
 import FadeModal from './fade-modal';
-import MetaMetricsOptInModal from './metametrics-opt-in-modal';
 import RejectTransactions from './reject-transactions';
 import ConfirmDeleteNetwork from './confirm-delete-network';
 import EditApprovalPermission from './edit-approval-permission';
@@ -166,22 +165,6 @@ const MODALS = {
     },
   },
 
-  METAMETRICS_OPT_IN_MODAL: {
-    contents: <MetaMetricsOptInModal />,
-    mobileModalStyle: {
-      ...modalContainerMobileStyle,
-      width: '100%',
-      height: '100%',
-      top: '0px',
-    },
-    laptopModalStyle: {
-      ...modalContainerLaptopStyle,
-      top: '10%',
-    },
-    contentStyle: {
-      borderRadius: '0px',
-    },
-  },
 
   CONFIRM_RESET_ACCOUNT: {
     contents: <ConfirmResetAccount />,

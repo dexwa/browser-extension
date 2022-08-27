@@ -136,11 +136,11 @@
     "message": "Account identicon"
   },
   "accountName": {
-    "message": "Account name"
+    "message": "Address name"
   },
   "accountNameDuplicate": {
-    "message": "This account name already exists",
-    "description": "This is an error message shown when the user enters a new account name that matches an existing account name"
+    "message": "This address name already exists",
+    "description": "This is an error message shown when the user enters a new address name that matches an existing address name"
   },
   "accountOptions": {
     "message": "Account options"

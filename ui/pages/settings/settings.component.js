@@ -229,12 +229,12 @@ class SettingsPage extends PureComponent {
           },
           {
             content: t('advanced'),
-            icon: <i className="fas fa-screwdriver-wrench" />,
+            icon: <i className="fas fa-screwdriver" />,
             key: ADVANCED_ROUTE,
           },
           {
             content: t('contacts'),
-            icon: <i className="fa fa-address-book" />,
+            icon: <i className="fa fa-address-card" />,
             key: CONTACT_LIST_ROUTE,
           },
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
@@ -251,7 +251,7 @@ class SettingsPage extends PureComponent {
           ///: END:ONLY_INCLUDE_IN
           {
             content: t('securityAndPrivacy'),
-            icon: <i className="fa fa-lock" />,
+            icon: <i className="fa fa-shield-alt" />,
             key: SECURITY_ROUTE,
           },
           {
