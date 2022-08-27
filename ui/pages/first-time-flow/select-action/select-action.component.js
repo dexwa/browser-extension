@@ -135,7 +135,6 @@
 //   }
 // }
 
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../components/ui/button';
@@ -219,31 +218,35 @@ export default class SelectAction extends PureComponent {
 
         <div className="select-action__wrapper">
           <div className="select-action__body">
-            <div className="select-action__body-header"> 
-            <div className="select-action__body-header"></div>
-            <div className="select-action__body-header"></div>
             <div className="select-action__body-header">
-              <img src='./images/logo/metamask-fox.svg' width='120px' height='120px' />
-            </div>
+              <div className="select-action__body-header"></div>
+              <div className="select-action__body-header"></div>
+              <div className="select-action__body-header">
+                <img
+                  src="./images/logo/metamask-fox.svg"
+                  width="200px"
+                  height="200px"
+                />
+              </div>
               {/* {t('newToDexWallet')} */}
               <div className="select-action__body-header"></div>
               <Button
-                  type="primary"
-                  className="first-time-flow__button"
-                  onClick={this.handleImport}
-                  data-testid="import-wallet-button"
-                >
-                  {t('importWallet')}
-                </Button>
-                <div className="select-action__body-header"></div>
+                type="primary"
+                className="first-time-flow__button"
+                onClick={this.handleImport}
+                data-testid="import-wallet-button"
+              >
+                {t('importWallet')}
+              </Button>
+              <div className="select-action__body-header"></div>
               <Button
-                  type="primary"
-                  className="first-time-flow__button"
-                  onClick={this.handleCreate}
-                  data-testid="create-wallet-button"
-                >
-                  {t('createAWallet')}
-                </Button>
+                type="primary"
+                className="first-time-flow__button"
+                onClick={this.handleCreate}
+                data-testid="create-wallet-button"
+              >
+                {t('createAWallet')}
+              </Button>
             </div>
           </div>
         </div>

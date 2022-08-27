@@ -34,6 +34,7 @@ import Alerts from '../../components/app/alerts';
 import Asset from '../asset';
 import OnboardingAppHeader from '../onboarding-flow/onboarding-app-header/onboarding-app-header';
 import TokenDetailsPage from '../token-details';
+import TransactionList from '../../components/app/transaction-list';
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import Notifications from '../notifications';
 ///: END:ONLY_INCLUDE_IN
@@ -62,6 +63,7 @@ import {
   ONBOARDING_ROUTE,
   ADD_COLLECTIBLE_ROUTE,
   TOKEN_DETAILS,
+  TRANSACTION_LIST_ROUTE,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   NOTIFICATIONS_ROUTE,
   ///: END:ONLY_INCLUDE_IN
@@ -234,6 +236,10 @@ export default class Routes extends Component {
         />
         <Authenticated path={`${ASSET_ROUTE}/:asset/:id`} component={Asset} />
         <Authenticated path={`${ASSET_ROUTE}/:asset/`} component={Asset} />
+        <Authenticated
+          path={TRANSACTION_LIST_ROUTE}
+          component={TransactionList}
+        />
         <Authenticated path={DEFAULT_ROUTE} component={Home} />
       </Switch>
     );

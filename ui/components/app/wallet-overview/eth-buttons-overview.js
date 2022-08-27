@@ -3,26 +3,22 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
+import TransactionList from '../../../components/app/transaction-list';
 
-import Identicon from '../../ui/identicon';
 import { I18nContext } from '../../../contexts/i18n';
 import {
   SEND_ROUTE,
   BUILD_QUOTE_ROUTE,
+  TRANSACTION_LIST_ROUTE,
 } from '../../../helpers/constants/routes';
 import Tooltip from '../../ui/tooltip';
-import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
-import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
 import { showModal } from '../../../store/actions';
 import {
-  isBalanceCached,
-  getShouldShowFiat,
   getCurrentKeyring,
   getSwapsDefaultToken,
   getIsSwapsChain,
   getIsBuyableChain,
   getNativeCurrencyImage,
-  getSelectedAccountCachedBalance,
 } from '../../../selectors/selectors';
 import SwapIcon from '../../ui/icon/swap-icon.component';
 import BuyIcon from '../../ui/icon/overview-buy-icon.component';
@@ -46,14 +42,13 @@ const EthButtonsOverview = ({ className }) => {
   const usingHardwareWallet = isHardwareKeyring(keyring?.type);
   const isSwapsChain = useSelector(getIsSwapsChain);
   const isBuyableChain = useSelector(getIsBuyableChain);
-  const primaryTokenImage = useSelector(getNativeCurrencyImage);
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
 
   return (
     <WalletOverview
       buttons={
         <>
-                  <IconButton
+          <IconButton
             className="eth-overview__button"
             Icon={ReceiveIcon}
             disabled={!isBuyableChain}
@@ -70,7 +65,7 @@ const EthButtonsOverview = ({ className }) => {
               dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
             }}
           />
-          <IconButton
+          {/* <IconButton
             className="eth-overview__button"
             Icon={BuyIcon}
             disabled={!isBuyableChain}
@@ -86,7 +81,7 @@ const EthButtonsOverview = ({ className }) => {
               });
               dispatch(showModal({ name: 'DEPOSIT_ETHER' }));
             }}
-          />
+          /> */}
           <IconButton
             className="eth-overview__button"
             data-testid="eth-overview-send"
@@ -142,6 +137,37 @@ const EthButtonsOverview = ({ className }) => {
                 {contents}
               </Tooltip>
             )}
+          />
+          <IconButton
+            className="eth-overview__button"
+            data-testid="eth-overview-send"
+            Icon={SendIcon}
+            label={t('assets')}
+            onClick={() => {
+              trackEvent({
+                event: EVENT_NAMES.NAV_SEND_BUTTON_CLICKED,
+                category: EVENT.CATEGORIES.NAVIGATION,
+                properties: {
+                  token_symbol: 'ETH',
+                  location: 'Home',
+                  text: 'Send',
+                },
+              });
+              dispatch(
+                startNewDraftTransaction({ type: ASSET_TYPES.NATIVE }),
+              ).then(() => {
+                history.push(SEND_ROUTE);
+              });
+            }}
+          />
+          <IconButton
+            className="eth-overview__button"
+            data-testid="eth-overview-send"
+            Icon={SendIcon}
+            label={t('activity')}
+            onClick={() => {
+              history.push(TRANSACTION_LIST_ROUTE);
+            }}
           />
         </>
       }

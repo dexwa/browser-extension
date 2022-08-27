@@ -81,6 +81,8 @@ const ONBOARDING_PIN_EXTENSION_ROUTE = '/onboarding/pin-extension';
 const ONBOARDING_WELCOME_ROUTE = '/onboarding/welcome';
 const ONBOARDING_METAMETRICS = '/onboarding/metametrics';
 
+const TRANSACTION_LIST_ROUTE = '/activity';
+
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 const INITIALIZE_EXPERIMENTAL_AREA = '/initialize/experimental-area';
 const ONBOARDING_EXPERIMENTAL_AREA = '/onboarding/experimental-area';
@@ -103,6 +105,7 @@ const CONFIRMATION_V_NEXT_ROUTE = '/confirmation';
 // Used to pull a convenient name for analytics tracking events. The key must
 // be react-router ready path, and can include params such as :id for popup windows
 const PATH_NAME_MAP = {
+  [TRANSACTION_LIST_ROUTE]: 'Activity',
   [DEFAULT_ROUTE]: 'Home',
   [UNLOCK_ROUTE]: 'Unlock Page',
   [LOCK_ROUTE]: 'Lock Page',
@@ -190,6 +193,7 @@ const PATH_NAME_MAP = {
 };
 
 export {
+  TRANSACTION_LIST_ROUTE,
   DEFAULT_ROUTE,
   ALERTS_ROUTE,
   ASSET_ROUTE,

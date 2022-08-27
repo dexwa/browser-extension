@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../components/ui/button';
 import Snackbar from '../../../components/ui/snackbar';
-// import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import { SUPPORT_REQUEST_LINK } from '../../../helpers/constants/common';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 import { returnToOnboardingInitiatorTab } from '../onboarding-initiator-util';
@@ -18,14 +17,6 @@ export default class EndOfFlowScreen extends PureComponent {
     trackEvent: PropTypes.func,
   };
 
-  static propTypes = {
-    history: PropTypes.object,
-    setCompletedOnboarding: PropTypes.func,
-    onboardingInitiator: PropTypes.exact({
-      location: PropTypes.string,
-      tabId: PropTypes.number,
-    }),
-  };
 
   async _beforeUnload() {
     await this._onOnboardingComplete();
@@ -65,9 +56,7 @@ export default class EndOfFlowScreen extends PureComponent {
 
     return (
       <div className="end-of-flow" data-testid="end-of-flow">
-        {/* <MetaFoxLogo /> */}
         <div className="end-of-flow__emoji">🎉</div>
-        {/* <div className="first-time-flow__header">{t('congratulations')}</div> */}
         <div className="first-time-flow__text-block end-of-flow__text-1">
           {t('endOfFlowMessage1')}
         </div>

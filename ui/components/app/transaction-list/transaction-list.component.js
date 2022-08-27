@@ -14,6 +14,7 @@ import { TOKEN_CATEGORY_HASH } from '../../../helpers/constants/transactions';
 import { SWAPS_CHAINID_CONTRACT_ADDRESS_MAP } from '../../../../shared/constants/swaps';
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
 import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
+import { EthButtonsOverview } from '../../../components/app/wallet-overview';
 
 const PAGE_INCREMENT = 10;
 
@@ -181,6 +182,7 @@ export default function TransactionList({
             </Button>
           )}
         </div>
+        <EthButtonsOverview />
       </div>
     </div>
   );

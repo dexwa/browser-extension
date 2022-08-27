@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  min-height: 209px;
+  min-height: auto;
   min-width: 0;
   padding-top: 10px;
   flex-direction: column;
@@ -12,8 +12,9 @@
   &__balance {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     width: 100%;
   }
 
@@ -40,7 +41,7 @@
 .eth-overview {
   &__balance {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     min-width: 0;
     position: relative;
     align-items: center;

@@ -142,12 +142,11 @@ export default function LoadingSwapsQuotes({
             className="loading-swaps-quotes__mascot-container"
             ref={mascotContainer}
           >
-            <Mascot
-              animationEventEmitter={animationEventEmitter.current}
-              width="90"
-              height="90"
-              lookAtTarget={midPointTarget}
-            />
+            <img
+              src="./images/logo/metamask-fox.svg"
+              width="120px"
+              height="120px"
+            ></img>
           </div>
         </div>
       </div>

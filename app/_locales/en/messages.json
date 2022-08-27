@@ -2223,6 +2223,7 @@
   "noTransactions": {
     "message": "You have no transactions"
   },
+  
   "noWebcamFound": {
     "message": "Your computer's webcam was not found. Please try again."
   },

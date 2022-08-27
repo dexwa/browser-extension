@@ -14,7 +14,10 @@ import Box from '../../components/ui/box';
 import ConnectedSites from '../connected-sites';
 import ConnectedAccounts from '../connected-accounts';
 import { Tabs, Tab } from '../../components/ui/tabs';
-import { EthOverview, EthButtonsOverview } from '../../components/app/wallet-overview';
+import {
+  EthOverview,
+  EthButtonsOverview,
+} from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
 import ActionableMessage from '../../components/ui/actionable-message/actionable-message';
@@ -40,6 +43,7 @@ import {
   VIEW_QUOTE_ROUTE,
   CONFIRMATION_V_NEXT_ROUTE,
   ADD_COLLECTIBLE_ROUTE,
+  TRANSACTION_LIST_ROUTE,
 } from '../../helpers/constants/routes';
 ///: BEGIN:ONLY_INCLUDE_IN(beta)
 import BetaHomeFooter from './beta/beta-home-footer.component';
@@ -611,6 +615,11 @@ export default class Home extends PureComponent {
       <div className="main-container">
         <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
         <Route
+          path={TRANSACTION_LIST_ROUTE}
+          component={TransactionList}
+          exact
+        />
+        <Route
           path={CONNECTED_ACCOUNTS_ROUTE}
           component={ConnectedAccounts}
           exact
@@ -636,18 +645,11 @@ export default class Home extends PureComponent {
               onTabClick={onTabClick}
               tabsClassName="home__tabs"
             >
-              <Tab
-                activeClassName="home__tab--active"
-                className="home__tab"
-                data-testid="home__asset-tab"
-                name={t('assets')}
-              >
-                <AssetList
-                  onClickAsset={(asset) =>
-                    history.push(`${ASSET_ROUTE}/${asset}`)
-                  }
-                />
-              </Tab>
+              <AssetList
+                onClickAsset={(asset) =>
+                  history.push(`${ASSET_ROUTE}/${asset}`)
+                }
+              />
               {process.env.COLLECTIBLES_V1 ? (
                 <Tab
                   activeClassName="home__tab--active"
@@ -662,62 +664,14 @@ export default class Home extends PureComponent {
                   />
                 </Tab>
               ) : null}
-              <Tab
-                activeClassName="home__tab--active"
-                className="home__tab"
-                data-testid="home__activity-tab"
-                name={t('activity')}
-              >
-                <TransactionList />
-              </Tab>
             </Tabs>
-            <div className="home__support">
-            <EthButtonsOverview />
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(main)
-                // t('needHelp', [
-                //   <a
-                //     href={SUPPORT_LINK}
-                //     target="_blank"
-                //     rel="noopener noreferrer"
-                //     key="need-help-link"
-                //     onClick={() => {
-                //       this.context.trackEvent(
-                //         {
-                //           category: EVENT.CATEGORIES.HOME,
-                //           event: EVENT_NAMES.SUPPORT_LINK_CLICKED,
-                //           properties: {
-                //             url: SUPPORT_LINK,
-                //           },
-                //         },
-                //         {
-                //           contextPropsIntoEventProperties: [
-                //             CONTEXT_PROPS.PAGE_TITLE,
-                //           ],
-                //         },
-                //       );
-                //     }}
-                //   >
-                //     {t('needHelpLinkText')}
-                //   </a>,
-                // ])
-                ///: END:ONLY_INCLUDE_IN
-              }
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(beta)
-                <BetaHomeFooter />
-                ///: END:ONLY_INCLUDE_IN
-              }
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(flask)
-                <FlaskHomeFooter />
-                ///: END:ONLY_INCLUDE_IN
-              }
+            <div>
+              <EthButtonsOverview />
             </div>
           </div>
-
-          {this.renderNotifications()}
         </div>
+
+        {this.renderNotifications()}
       </div>
     );
   }
