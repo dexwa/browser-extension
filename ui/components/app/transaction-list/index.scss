@@ -7,8 +7,15 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-height: 600px;
+    min-height: 400px;
     margin-top: 15px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &__completed-transactions::-webkit-scrollbar {
+    display: none;
   }
 
   &__header {

@@ -32,55 +32,7 @@ export default function EnableEIP1559V2Notice({ isFirstAlert }) {
     return null;
   }
 
-  return (
-    <Box
-      marginRight={4}
-      marginBottom={4}
-      marginLeft={4}
-      marginTop={isFirstAlert ? 4 : 0}
-      className="enableEIP1559V2-notice"
-    >
-      <Dialog type="message" className="enableEIP1559V2-notice__dialog">
-        <button
-          onClick={setEnableEIP1559V2NoticeDismissed}
-          className="enableEIP1559V2-notice__close-button"
-          data-testid="enableEIP1559V2-notice-close"
-        />
-        <Box display={DISPLAY.FLEX}>
-          <Box paddingTop={2}>
-            <i style={{ fontSize: '1rem' }} className="fa fa-info-circle" />
-          </Box>
-          <Box paddingLeft={4}>
-            <Typography
-              color={COLORS.TEXT_DEFAULT}
-              align={TEXT_ALIGN.LEFT}
-              variant={TYPOGRAPHY.H7}
-              fontWeight={FONT_WEIGHT.BOLD}
-            >
-              {t('enableEIP1559V2Header')}
-            </Typography>
-            <Typography
-              color={COLORS.TEXT_DEFAULT}
-              align={TEXT_ALIGN.LEFT}
-              variant={TYPOGRAPHY.H7}
-              boxProps={{ marginBottom: 2 }}
-            >
-              {t('enableEIP1559V2AlertMessage')}
-            </Typography>
-            <Button
-              type="link"
-              onClick={() => {
-                history.push(EXPERIMENTAL_ROUTE);
-              }}
-              className="enableEIP1559V2-notice__link"
-            >
-              {t('enableEIP1559V2ButtonText')}
-            </Button>
-          </Box>
-        </Box>
-      </Dialog>
-    </Box>
-  );
+  return <div> </div>;
 }
 
 EnableEIP1559V2Notice.propTypes = {

@@ -2,6 +2,7 @@ const DEFAULT_ROUTE = '/';
 const UNLOCK_ROUTE = '/unlock';
 const LOCK_ROUTE = '/lock';
 const ASSET_ROUTE = '/asset';
+const ASSETLIST_ROUTE = '/asset-list';
 const SETTINGS_ROUTE = '/settings';
 const GENERAL_ROUTE = '/settings/general';
 const ADVANCED_ROUTE = '/settings/advanced';
@@ -105,6 +106,7 @@ const CONFIRMATION_V_NEXT_ROUTE = '/confirmation';
 // Used to pull a convenient name for analytics tracking events. The key must
 // be react-router ready path, and can include params such as :id for popup windows
 const PATH_NAME_MAP = {
+  [ASSETLIST_ROUTE]: 'Asset List',
   [TRANSACTION_LIST_ROUTE]: 'Activity',
   [DEFAULT_ROUTE]: 'Home',
   [UNLOCK_ROUTE]: 'Unlock Page',
@@ -194,6 +196,7 @@ const PATH_NAME_MAP = {
 
 export {
   TRANSACTION_LIST_ROUTE,
+  ASSETLIST_ROUTE,
   DEFAULT_ROUTE,
   ALERTS_ROUTE,
   ASSET_ROUTE,

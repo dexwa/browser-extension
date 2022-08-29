@@ -10,6 +10,7 @@ import {
   SEND_ROUTE,
   BUILD_QUOTE_ROUTE,
   TRANSACTION_LIST_ROUTE,
+  ASSETLIST_ROUTE,
 } from '../../../helpers/constants/routes';
 import Tooltip from '../../ui/tooltip';
 import { showModal } from '../../../store/actions';
@@ -21,7 +22,10 @@ import {
   getNativeCurrencyImage,
 } from '../../../selectors/selectors';
 import SwapIcon from '../../ui/icon/swap-icon.component';
+
 import BuyIcon from '../../ui/icon/overview-buy-icon.component';
+import AssetIcon from '../../ui/icon/overview-asset-icon.component';
+import ActivityIcon from '../../ui/icon/overview-activity-icon.component';
 import ReceiveIcon from '../../ui/icon/overview-receive-icon.component';
 import SendIcon from '../../ui/icon/overview-send-icon.component';
 import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
@@ -141,29 +145,16 @@ const EthButtonsOverview = ({ className }) => {
           <IconButton
             className="eth-overview__button"
             data-testid="eth-overview-send"
-            Icon={SendIcon}
+            Icon={AssetIcon}
             label={t('assets')}
             onClick={() => {
-              trackEvent({
-                event: EVENT_NAMES.NAV_SEND_BUTTON_CLICKED,
-                category: EVENT.CATEGORIES.NAVIGATION,
-                properties: {
-                  token_symbol: 'ETH',
-                  location: 'Home',
-                  text: 'Send',
-                },
-              });
-              dispatch(
-                startNewDraftTransaction({ type: ASSET_TYPES.NATIVE }),
-              ).then(() => {
-                history.push(SEND_ROUTE);
-              });
+              history.push(ASSETLIST_ROUTE);
             }}
           />
           <IconButton
             className="eth-overview__button"
             data-testid="eth-overview-send"
-            Icon={SendIcon}
+            Icon={ActivityIcon}
             label={t('activity')}
             onClick={() => {
               history.push(TRANSACTION_LIST_ROUTE);

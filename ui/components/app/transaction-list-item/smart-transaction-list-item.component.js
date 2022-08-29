@@ -36,7 +36,7 @@ export default function SmartTransactionListItem({
     sourceTokenSymbol,
     destinationTokenSymbol,
   ]);
-  const subtitle = 'metamask';
+  const subtitle = 'dexwallet';
   const date = formatDateWithYearContext(time);
   let displayedStatusKey;
   if (status === SMART_TRANSACTION_STATUSES.PENDING) {

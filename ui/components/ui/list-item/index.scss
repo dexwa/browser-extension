@@ -114,8 +114,10 @@
 .list-item--single-content-row {
   grid-template-areas: 'icon head     head     head     head     head     head     head     right right right right';
   align-items: center;
+  margin-top: 15px;
 
   @include screen-sm-min {
     grid-template-areas: 'icon head     head     head     head     mid mid mid mid right right right';
+    margin-top: 15px;
   }
 }

@@ -1,6 +1,8 @@
 .show-hide-toggle {
-  position: relative;
+  position: absolute;
   display: inline-flex;
+  top: 12px;
+  right: 10px;
 
   &__input {
     appearance: none;

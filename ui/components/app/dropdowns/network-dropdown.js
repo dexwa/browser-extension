@@ -354,9 +354,6 @@ class NetworkDropdown extends Component {
 
           {shouldShowTestNetworks && (
             <>
-              {this.renderNetworkEntry('ropsten')}
-              {this.renderNetworkEntry('kovan')}
-              {this.renderNetworkEntry('rinkeby')}
               {this.renderNetworkEntry('goerli')}
               {this.renderCustomRpcList(
                 rpcListDetailForLocalHost,

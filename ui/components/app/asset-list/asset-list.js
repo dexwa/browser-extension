@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import ImportTokenLink from '../import-token-link';
+import { useHistory } from 'react-router-dom';
 import TokenList from '../token-list';
 import AssetListItem from '../asset-list-item';
 import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
@@ -28,8 +29,10 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import DetectedToken from '../detected-token/detected-token';
 import DetectedTokensLink from './detetcted-tokens-link/detected-tokens-link';
+import { DEFAULT_ROUTE } from '../../../../ui/helpers/constants/routes';
 
 const AssetList = ({ onClickAsset }) => {
+  const history = useHistory();
   const t = useI18nContext();
 
   const [showDetectedTokens, setShowDetectedTokens] = useState(false);
@@ -72,35 +75,45 @@ const AssetList = ({ onClickAsset }) => {
 
   return (
     <>
-      <AssetListItem
-        onClick={() => onClickAsset(nativeCurrency)}
-        data-testid="wallet-balance"
-        primary={
-          primaryCurrencyProperties.value ?? secondaryCurrencyProperties.value
-        }
-        tokenSymbol={primaryCurrencyProperties.suffix}
-        secondary={showFiat ? secondaryCurrencyDisplay : undefined}
-        tokenImage={balanceIsLoading ? null : primaryTokenImage}
-        identiconBorder
-      />
-      <TokenList
-        onTokenClick={(tokenAddress) => {
-          onClickAsset(tokenAddress);
-          trackEvent({
-            event: EVENT_NAMES.TOKEN_SCREEN_OPENED,
-            category: EVENT.CATEGORIES.NAVIGATION,
-            properties: {
-              token_symbol: primaryCurrencyProperties.suffix,
-              location: 'Home',
-            },
-          });
-        }}
-      />
-      {detectedTokens.length > 0 &&
-        !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
-          <DetectedTokensLink setShowDetectedTokens={setShowDetectedTokens} />
-        )}
-      {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
+      <div className="main-container">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            history.push(DEFAULT_ROUTE);
+          }}
+        >
+          {`< ${t('back')}`}
+        </a>
+        <AssetListItem
+          onClick={() => onClickAsset(nativeCurrency)}
+          data-testid="wallet-balance"
+          primary={
+            primaryCurrencyProperties.value ?? secondaryCurrencyProperties.value
+          }
+          tokenSymbol={primaryCurrencyProperties.suffix}
+          secondary={showFiat ? secondaryCurrencyDisplay : undefined}
+          tokenImage={balanceIsLoading ? null : primaryTokenImage}
+          identiconBorder
+        />
+        <TokenList
+          onTokenClick={(tokenAddress) => {
+            onClickAsset(tokenAddress);
+            trackEvent({
+              event: EVENT_NAMES.TOKEN_SCREEN_OPENED,
+              category: EVENT.CATEGORIES.NAVIGATION,
+              properties: {
+                token_symbol: primaryCurrencyProperties.suffix,
+                location: 'Home',
+              },
+            });
+          }}
+        />
+        {detectedTokens.length > 0 &&
+          !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
+            <DetectedTokensLink setShowDetectedTokens={setShowDetectedTokens} />
+          )}
+        {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
         <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
           <Typography
             color={COLORS.TEXT_ALTERNATIVE}
@@ -112,9 +125,10 @@ const AssetList = ({ onClickAsset }) => {
         </Box>
         <ImportTokenLink />
       </Box> */}
-      {showDetectedTokens && (
-        <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
-      )}
+        {showDetectedTokens && (
+          <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
+        )}
+      </div>
     </>
   );
 };

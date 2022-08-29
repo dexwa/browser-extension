@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import { formatDate } from '../../helpers/utils/util';
-import AssetList from '../../components/app/asset-list';
-import CollectiblesTab from '../../components/app/collectibles-tab';
 import HomeNotification from '../../components/app/home-notification';
 import MultipleNotifications from '../../components/app/multiple-notifications';
 import TransactionList from '../../components/app/transaction-list';
@@ -13,7 +11,6 @@ import Button from '../../components/ui/button';
 import Box from '../../components/ui/box';
 import ConnectedSites from '../connected-sites';
 import ConnectedAccounts from '../connected-accounts';
-import { Tabs, Tab } from '../../components/ui/tabs';
 import {
   EthOverview,
   EthButtonsOverview,
@@ -30,7 +27,6 @@ import {
 } from '../../helpers/constants/design-system';
 
 import {
-  ASSET_ROUTE,
   RESTORE_VAULT_ROUTE,
   CONFIRM_TRANSACTION_ROUTE,
   CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE,
@@ -42,15 +38,8 @@ import {
   BUILD_QUOTE_ROUTE,
   VIEW_QUOTE_ROUTE,
   CONFIRMATION_V_NEXT_ROUTE,
-  ADD_COLLECTIBLE_ROUTE,
   TRANSACTION_LIST_ROUTE,
 } from '../../helpers/constants/routes';
-///: BEGIN:ONLY_INCLUDE_IN(beta)
-import BetaHomeFooter from './beta/beta-home-footer.component';
-///: END:ONLY_INCLUDE_IN
-///: BEGIN:ONLY_INCLUDE_IN(flask)
-import FlaskHomeFooter from './flask/flask-home-footer.component';
-///: END:ONLY_INCLUDE_IN
 
 const LEARN_MORE_URL =
   'https://metamask.zendesk.com/hc/en-us/articles/360045129011-Intro-to-MetaMask-v8-extension';
@@ -99,10 +88,8 @@ export default class Home extends PureComponent {
     totalUnapprovedCount: PropTypes.number.isRequired,
     setConnectedStatusPopoverHasBeenShown: PropTypes.func,
     connectedStatusPopoverHasBeenShown: PropTypes.bool,
-    defaultHomeActiveTabName: PropTypes.string,
     firstTimeFlowType: PropTypes.string,
     completedOnboarding: PropTypes.bool,
-    onTabClick: PropTypes.func.isRequired,
     haveSwapsQuotes: PropTypes.bool.isRequired,
     showAwaitingSwapScreen: PropTypes.bool.isRequired,
     swapsFetchParams: PropTypes.object,
@@ -582,12 +569,8 @@ export default class Home extends PureComponent {
   };
 
   render() {
-    const { t } = this.context;
     const {
-      defaultHomeActiveTabName,
-      onTabClick,
       forgottenPassword,
-      history,
       connectedStatusPopoverHasBeenShown,
       isPopup,
       announcementsToShow,
@@ -637,37 +620,8 @@ export default class Home extends PureComponent {
             : null}
           <div className="home__main-view">
             <MenuBar />
-            <div className="home__balance-wrapper">
-              <EthOverview />
-            </div>
-            <Tabs
-              defaultActiveTabName={defaultHomeActiveTabName}
-              onTabClick={onTabClick}
-              tabsClassName="home__tabs"
-            >
-              <AssetList
-                onClickAsset={(asset) =>
-                  history.push(`${ASSET_ROUTE}/${asset}`)
-                }
-              />
-              {process.env.COLLECTIBLES_V1 ? (
-                <Tab
-                  activeClassName="home__tab--active"
-                  className="home__tab"
-                  data-testid="home__nfts-tab"
-                  name={t('nfts')}
-                >
-                  <CollectiblesTab
-                    onAddNFT={() => {
-                      history.push(ADD_COLLECTIBLE_ROUTE);
-                    }}
-                  />
-                </Tab>
-              ) : null}
-            </Tabs>
-            <div>
-              <EthButtonsOverview />
-            </div>
+            <EthOverview />
+            <EthButtonsOverview />
           </div>
         </div>
 

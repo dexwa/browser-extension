@@ -94,7 +94,6 @@ class SettingsPage extends PureComponent {
       isSnapViewPage,
     } = this.props;
 
-
     return (
       <div
         className={classnames('main-container settings-page', {
@@ -224,7 +223,7 @@ class SettingsPage extends PureComponent {
         tabs={[
           {
             content: t('general'),
-            icon: <i className="fa fa-cog" />,
+            icon: <i className="fa fa-wrench" />,
             key: GENERAL_ROUTE,
           },
           {
@@ -256,12 +255,12 @@ class SettingsPage extends PureComponent {
           },
           {
             content: t('alerts'),
-            icon: <i className="fa fa-bell" />,
+            icon: <i className="fa fa-lightbulb" />,
             key: ALERTS_ROUTE,
           },
           {
             content: t('networks'),
-            icon: <i className="fa fa-plug" />,
+            icon: <i className="fa fa-satellite" />,
             key: NETWORKS_ROUTE,
           },
           // {

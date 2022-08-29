@@ -32,6 +32,7 @@ import AppHeader from '../../components/app/app-header';
 import UnlockPage from '../unlock-page';
 import Alerts from '../../components/app/alerts';
 import Asset from '../asset';
+import AssetList from '../../components/app/asset-list';
 import OnboardingAppHeader from '../onboarding-flow/onboarding-app-header/onboarding-app-header';
 import TokenDetailsPage from '../token-details';
 import TransactionList from '../../components/app/transaction-list';
@@ -64,8 +65,10 @@ import {
   ADD_COLLECTIBLE_ROUTE,
   TOKEN_DETAILS,
   TRANSACTION_LIST_ROUTE,
+  ASSETLIST_ROUTE,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   NOTIFICATIONS_ROUTE,
+
   ///: END:ONLY_INCLUDE_IN
 } from '../../helpers/constants/routes';
 
@@ -236,6 +239,7 @@ export default class Routes extends Component {
         />
         <Authenticated path={`${ASSET_ROUTE}/:asset/:id`} component={Asset} />
         <Authenticated path={`${ASSET_ROUTE}/:asset/`} component={Asset} />
+        <Authenticated path={ASSETLIST_ROUTE} component={AssetList} />
         <Authenticated
           path={TRANSACTION_LIST_ROUTE}
           component={TransactionList}

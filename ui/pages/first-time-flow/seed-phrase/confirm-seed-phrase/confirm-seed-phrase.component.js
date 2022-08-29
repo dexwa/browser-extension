@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from '../../../../components/ui/button';
 import {
-  INITIALIZE_END_OF_FLOW_ROUTE,
+  DEFAULT_ROUTE,
   INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
 import {
@@ -92,7 +92,7 @@ export default class ConfirmSeedPhrase extends PureComponent {
         });
 
         initializeThreeBox();
-        history.replace(INITIALIZE_END_OF_FLOW_ROUTE);
+        history.push(DEFAULT_ROUTE);
       });
     } catch (error) {
       console.error(error.message);
