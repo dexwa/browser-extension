@@ -138,15 +138,15 @@ export default function CreateNewVault({
           </label>
         </div>
       ) : null}
-      <div className='submit-btn-container'>
-      <Button
-        className="create-new-vault__submit-button"
-        type="primary"
-        submit
-        disabled={!isValid}
-      >
-        {submitText}
-      </Button>
+      <div className="submit-btn-container">
+        <Button
+          className="create-new-vault__submit-button"
+          type="primary"
+          submit
+          disabled={!isValid}
+        >
+          {submitText}
+        </Button>
       </div>
     </form>
   );

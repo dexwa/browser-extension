@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   nonceSortedCompletedTransactionsSelector,
   nonceSortedPendingTransactionsSelector,
@@ -15,6 +16,7 @@ import { SWAPS_CHAINID_CONTRACT_ADDRESS_MAP } from '../../../../shared/constants
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
 import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
 import { EthButtonsOverview } from '../../../components/app/wallet-overview';
+import { DEFAULT_ROUTE } from '../../../../ui/helpers/constants/routes';
 
 const PAGE_INCREMENT = 10;
 
@@ -69,6 +71,7 @@ export default function TransactionList({
   hideTokenTransactions,
   tokenAddress,
 }) {
+  const history = useHistory();
   const [limit, setLimit] = useState(PAGE_INCREMENT);
   const t = useI18nContext();
 
@@ -117,72 +120,83 @@ export default function TransactionList({
   );
 
   return (
-    <div className="transaction-list">
-      <div className="transaction-list__transactions">
-        {pendingTransactions.length > 0 && (
-          <div className="transaction-list__pending-transactions">
-            <div className="transaction-list__header">
-              {`${t('queue')} (${pendingTransactions.length})`}
-            </div>
-            {pendingTransactions.map((transactionGroup, index) =>
-              transactionGroup.initialTransaction.transactionType ===
-              TRANSACTION_TYPES.SMART ? (
-                <SmartTransactionListItem
-                  isEarliestNonce={index === 0}
-                  smartTransaction={transactionGroup.initialTransaction}
-                  transactionGroup={transactionGroup}
-                  key={`${transactionGroup.nonce}:${index}`}
-                />
-              ) : (
-                <TransactionListItem
-                  isEarliestNonce={index === 0}
-                  transactionGroup={transactionGroup}
-                  key={`${transactionGroup.nonce}:${index}`}
-                />
-              ),
-            )}
-          </div>
-        )}
-        <div className="transaction-list__completed-transactions">
-          {pendingTransactions.length > 0 ? (
-            <div className="transaction-list__header">{t('history')}</div>
-          ) : null}
-          {completedTransactions.length > 0 ? (
-            completedTransactions
-              .slice(0, limit)
-              .map((transactionGroup, index) =>
-                transactionGroup.initialTransaction?.transactionType ===
-                'smart' ? (
+    <div className="main-container">
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          history.push(DEFAULT_ROUTE);
+        }}
+      >
+        {`< ${t('back')}`}
+      </a>
+      <div className="transaction-list">
+        <div className="transaction-list__transactions">
+          {pendingTransactions.length > 0 && (
+            <div className="transaction-list__pending-transactions">
+              <div className="transaction-list__header">
+                {`${t('queue')} (${pendingTransactions.length})`}
+              </div>
+              {pendingTransactions.map((transactionGroup, index) =>
+                transactionGroup.initialTransaction.transactionType ===
+                TRANSACTION_TYPES.SMART ? (
                   <SmartTransactionListItem
-                    transactionGroup={transactionGroup}
+                    isEarliestNonce={index === 0}
                     smartTransaction={transactionGroup.initialTransaction}
+                    transactionGroup={transactionGroup}
                     key={`${transactionGroup.nonce}:${index}`}
                   />
                 ) : (
                   <TransactionListItem
+                    isEarliestNonce={index === 0}
                     transactionGroup={transactionGroup}
-                    key={`${transactionGroup.nonce}:${limit + index - 10}`}
+                    key={`${transactionGroup.nonce}:${index}`}
                   />
                 ),
-              )
-          ) : (
-            <div className="transaction-list__empty">
-              <div className="transaction-list__empty-text">
-                {t('noTransactions')}
-              </div>
+              )}
             </div>
           )}
-          {completedTransactions.length > limit && (
-            <Button
-              className="transaction-list__view-more"
-              type="secondary"
-              onClick={viewMore}
-            >
-              {t('viewMore')}
-            </Button>
-          )}
+          <div className="transaction-list__completed-transactions">
+            {pendingTransactions.length > 0 ? (
+              <div className="transaction-list__header">{t('history')}</div>
+            ) : null}
+            {completedTransactions.length > 0 ? (
+              completedTransactions
+                .slice(0, limit)
+                .map((transactionGroup, index) =>
+                  transactionGroup.initialTransaction?.transactionType ===
+                  'smart' ? (
+                    <SmartTransactionListItem
+                      transactionGroup={transactionGroup}
+                      smartTransaction={transactionGroup.initialTransaction}
+                      key={`${transactionGroup.nonce}:${index}`}
+                    />
+                  ) : (
+                    <TransactionListItem
+                      transactionGroup={transactionGroup}
+                      key={`${transactionGroup.nonce}:${limit + index - 10}`}
+                    />
+                  ),
+                )
+            ) : (
+              <div className="transaction-list__empty">
+                <div className="transaction-list__empty-text">
+                  {t('noTransactions')}
+                </div>
+              </div>
+            )}
+            {completedTransactions.length > limit && (
+              <Button
+                className="transaction-list__view-more"
+                type="secondary"
+                onClick={viewMore}
+              >
+                {t('viewMore')}
+              </Button>
+            )}
+          </div>
+          <EthButtonsOverview />
         </div>
-        <EthButtonsOverview />
       </div>
     </div>
   );

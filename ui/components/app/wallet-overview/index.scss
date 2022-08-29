@@ -23,6 +23,8 @@
     flex-direction: row;
     height: 68px;
     justify-content: space-between;
+    width: 100%;
+    padding: 0 10px 0 10px;
   }
 }
 
@@ -84,7 +86,7 @@
   }
 
   &__button {
-    margin-right: 24px;
+    margin-right: 0px;
   }
 
   &__button:last-of-type {
