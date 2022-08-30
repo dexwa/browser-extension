@@ -99,7 +99,7 @@ export default function setupSentry({ release, getState }) {
 
   Sentry.init({
     dsn: sentryTarget,
-    debug: METAMASK_DEBUG,
+    debug: false,
     environment,
     integrations: [new Dedupe(), new ExtraErrorData()],
     release,

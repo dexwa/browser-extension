@@ -11,7 +11,7 @@ import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import { getMostRecentOverviewPage } from '../../../ducks/history/history';
 
 const HELP_LINK =
-  'https://metamask.zendesk.com/hc/en-us/articles/360015489331-Importing-an-Account';
+  'https://dexwallet.com/support/hc/en-us/articles/360015489331-Importing-an-Account';
 
 class JsonImportSubview extends Component {
   state = {

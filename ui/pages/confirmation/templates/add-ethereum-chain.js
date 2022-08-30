@@ -42,7 +42,7 @@ const MISMATCHED_CHAIN_RECOMMENDATION = {
             element: 'a',
             key: 'mismatchedChainLink',
             props: {
-              href: 'https://metamask.zendesk.com/hc/en-us/articles/360057142392',
+              href: 'https://dexwallet.com/support/hc/en-us/articles/360057142392',
               target: '__blank',
               tabIndex: 0,
             },
@@ -231,7 +231,7 @@ function getValues(pendingApproval, t, actions, history) {
                       {t('someNetworksMayPoseSecurity')}{' '}
                       <a
                         key="zendesk_page_link"
-                        href="https://metamask.zendesk.com/hc/en-us/articles/4417500466971"
+                        href="https://dexwallet.com/support/hc/en-us/articles/4417500466971"
                         rel="noreferrer"
                         target="_blank"
                         style={{ color: 'var(--color-primary-default)' }}
@@ -268,7 +268,7 @@ function getValues(pendingApproval, t, actions, history) {
                   children: t('addEthereumChainConfirmationRisksLearnMoreLink'),
                   key: 'addEthereumChainConfirmationRisksLearnMoreLink',
                   props: {
-                    href: 'https://metamask.zendesk.com/hc/en-us/articles/4404424659995',
+                    href: 'https://dexwallet.com/support/hc/en-us/articles/4404424659995',
                     target: '__blank',
                   },
                 },

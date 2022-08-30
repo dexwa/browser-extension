@@ -35,7 +35,7 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import { startNewDraftTransaction } from '../../../ducks/send';
 import { ASSET_TYPES } from '../../../../shared/constants/transaction';
-import WalletOverview from './wallet-overview';
+import WalletOverviewButtons from './wallet-overview-buttons';
 
 const EthButtonsOverview = ({ className }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const EthButtonsOverview = ({ className }) => {
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
 
   return (
-    <WalletOverview
+    <WalletOverviewButtons
       buttons={
         <>
           <IconButton

@@ -1,7 +1,7 @@
 {
   "applications": {
     "gecko": {
-      "id": "webextension@metamask.io",
+      "id": "webextension@dexwallet.com",
       "strict_min_version": "68.0"
     }
   },
@@ -19,7 +19,7 @@
       "128": "images/icon-128.png",
       "512": "images/icon-512.png"
     },
-    "default_title": "MetaMask",
+    "default_title": "DexWallet",
     "default_popup": "popup.html"
   },
   "manifest_version": 2

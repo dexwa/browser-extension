@@ -13,14 +13,13 @@ export const GAS_ESTIMATE_TYPES = {
 };
 
 let _supportLink = 'https://support.dexwallet.com';
-let _supportRequestLink = 'https://dexwallet.zendesk.com/hc/en-us';
+let _supportRequestLink = 'https://dexwallet.com/support/hc/en-us';
 const _contractAddressLink =
-  'https://dexwallet.zendesk.com/hc/en-us/articles/360020028092-What-is-the-known-contract-address-warning-';
+  'https://dexwallet.com/support/hc/en-us/articles/360020028092-What-is-the-known-contract-address-warning-';
 
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
-_supportLink = 'https://dexwallet-flask.zendesk.com/hc';
-_supportRequestLink =
-  'https://dexwallet-flask.zendesk.com/hc/en-us/requests/new';
+_supportLink = 'https://dexwallet.com/support/hc';
+_supportRequestLink = 'https://dexwallet.com/support/hc/en-us/requests/new';
 ///: END:ONLY_INCLUDE_IN
 
 export const SUPPORT_LINK = _supportLink;

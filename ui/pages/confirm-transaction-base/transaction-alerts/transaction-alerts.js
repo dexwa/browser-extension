@@ -74,7 +74,7 @@ const TransactionAlerts = ({
               {t('learnCancelSpeeedup', [
                 <a
                   key="cancelSpeedUpInfo"
-                  href="https://metamask.zendesk.com/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"
+                  href="https://dexwallet.com/support/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"
                   rel="noopener noreferrer"
                   target="_blank"
                 >

@@ -216,7 +216,7 @@ const AddNetwork = () => {
                             {t('addNetworkTooltipWarning', [
                               <a
                                 key="zendesk_page_link"
-                                href="https://metamask.zendesk.com/hc/en-us/articles/4417500466971"
+                                href="https://dexwallet.com/support/hc/en-us/articles/4417500466971"
                                 rel="noreferrer"
                                 target="_blank"
                               >

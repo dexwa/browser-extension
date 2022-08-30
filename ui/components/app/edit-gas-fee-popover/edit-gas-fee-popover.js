@@ -95,7 +95,7 @@ const EditGasFeePopover = () => {
                     key="learnMoreLink"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://metamask.zendesk.com/hc/en-us/articles/4404600179227-User-Guide-Gas"
+                    href="https://dexwallet.com/support/hc/en-us/articles/4404600179227-User-Guide-Gas"
                   >
                     {t('learnMore')}
                   </a>,

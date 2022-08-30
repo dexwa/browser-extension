@@ -69,7 +69,7 @@ const CustomizeNonce = ({
               className="customize-nonce-modal__link"
               rel="noopener noreferrer"
               target="_blank"
-              href="https://metamask.zendesk.com/hc/en-us/articles/360015489251"
+              href="https://dexwallet.com/support/hc/en-us/articles/360015489251"
             >
               {t('learnMore')}
             </Button>

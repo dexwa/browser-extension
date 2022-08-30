@@ -20,7 +20,7 @@ import {
   LEDGER_TRANSPORT_TYPES,
   LEDGER_USB_VENDOR_ID,
 } from '../../../../shared/constants/hardware-wallets';
-import { EVENT} from '../../../../shared/constants/metametrics';
+import { EVENT } from '../../../../shared/constants/metametrics';
 import ActionableMessage from '../../../components/ui/actionable-message';
 
 export default class AdvancedTab extends PureComponent {
@@ -235,7 +235,6 @@ export default class AdvancedTab extends PureComponent {
       </div>
     );
   }
-
 
   renderHexDataOptIn() {
     const { t } = this.context;
@@ -549,7 +548,7 @@ export default class AdvancedTab extends PureComponent {
               <Button
                 key="ledger-connection-settings-learn-more"
                 type="link"
-                href="https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet"
+                href="https://dexwallet.com/support/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="settings-page__inline-link"

@@ -92,7 +92,7 @@ export default function CollectiblesTab({ onAddNFT }) {
                 type="link"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet"
+                href="https://dexwallet.com/support/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet"
               >
                 {t('learnMoreUpperCase')}
               </Button>

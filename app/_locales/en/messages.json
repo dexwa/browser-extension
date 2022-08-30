@@ -4073,7 +4073,7 @@
     "message": "Unlock"
   },
   "unlockMessage": {
-    "message": "The decentralized web awaits"
+    "message": "Connect with decentralized world"
   },
   "unrecognizedChain": {
     "message": "This custom network is not recognized",
@@ -4215,7 +4215,7 @@
     "message": "Welcome to DexWallet"
   },
   "welcomeBack": {
-    "message": "Welcome back!"
+    "message": "Unlock the Wallet!"
   },
   "welcomeExploreDescription": {
     "message": "Store, send and spend crypto currencies and assets."

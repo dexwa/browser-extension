@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import ImportTokenLink from '../import-token-link';
-import { useHistory } from 'react-router-dom';
+
 import TokenList from '../token-list';
 import AssetListItem from '../asset-list-item';
 import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
@@ -29,13 +29,8 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import DetectedToken from '../detected-token/detected-token';
 import DetectedTokensLink from './detetcted-tokens-link/detected-tokens-link';
-import {
-  DEFAULT_ROUTE,
-  TRANSACTION_LIST_ROUTE,
-} from '../../../../ui/helpers/constants/routes';
 
-const AssetList = () => {
-  const history = useHistory();
+const AssetList = ({ onClickAsset }) => {
   const t = useI18nContext();
 
   const [showDetectedTokens, setShowDetectedTokens] = useState(false);
@@ -83,10 +78,7 @@ const AssetList = () => {
           <div className="home__container">
             <div className="home__main-view">
               <AssetListItem
-                onClick={(e) => {
-                  e.preventDefault();
-                  history.push(TRANSACTION_LIST_ROUTE);
-                }}
+                onClick={() => onClickAsset(nativeCurrency)}
                 data-testid="wallet-balance"
                 primary={
                   primaryCurrencyProperties.value ??
@@ -98,9 +90,16 @@ const AssetList = () => {
                 identiconBorder
               />
               <TokenList
-                onClick={(e) => {
-                  e.preventDefault();
-                  history.push(TRANSACTION_LIST_ROUTE);
+                onTokenClick={(tokenAddress) => {
+                  onClickAsset(tokenAddress);
+                  trackEvent({
+                    event: EVENT_NAMES.TOKEN_SCREEN_OPENED,
+                    category: EVENT.CATEGORIES.NAVIGATION,
+                    properties: {
+                      token_symbol: primaryCurrencyProperties.suffix,
+                      location: 'Home',
+                    },
+                  });
                 }}
               />
               {detectedTokens.length > 0 &&
@@ -110,17 +109,17 @@ const AssetList = () => {
                   />
                 )}
               {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
-        <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
-          <Typography
-            color={COLORS.TEXT_ALTERNATIVE}
-            variant={TYPOGRAPHY.H6}
-            fontWeight={FONT_WEIGHT.NORMAL}
-          >
-            {t('missingToken')}
-          </Typography>
-        </Box>
-        <ImportTokenLink />
-      </Box> */}
+              <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
+                <Typography
+                  color={COLORS.TEXT_ALTERNATIVE}
+                  variant={TYPOGRAPHY.H6}
+                  fontWeight={FONT_WEIGHT.NORMAL}
+                >
+                  {t('missingToken')}
+                </Typography>
+              </Box>
+              <ImportTokenLink />
+            </Box> */}
               {showDetectedTokens && (
                 <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
               )}
@@ -133,7 +132,7 @@ const AssetList = () => {
 };
 
 AssetList.propTypes = {
-  onClickAsset: PropTypes.func,
+  onClickAsset: PropTypes.func.isRequired,
 };
 
 export default AssetList;
