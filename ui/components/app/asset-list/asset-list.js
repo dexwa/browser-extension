@@ -29,9 +29,12 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import DetectedToken from '../detected-token/detected-token';
 import DetectedTokensLink from './detetcted-tokens-link/detected-tokens-link';
-import { DEFAULT_ROUTE } from '../../../../ui/helpers/constants/routes';
+import {
+  DEFAULT_ROUTE,
+  TRANSACTION_LIST_ROUTE,
+} from '../../../../ui/helpers/constants/routes';
 
-const AssetList = ({ onClickAsset }) => {
+const AssetList = () => {
   const history = useHistory();
   const t = useI18nContext();
 
@@ -75,44 +78,38 @@ const AssetList = ({ onClickAsset }) => {
 
   return (
     <>
-      <div className="main-container">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            history.push(DEFAULT_ROUTE);
-          }}
-        >
-          {`< ${t('back')}`}
-        </a>
-        <AssetListItem
-          data-testid="wallet-balance"
-          primary={
-            primaryCurrencyProperties.value ?? secondaryCurrencyProperties.value
-          }
-          tokenSymbol={primaryCurrencyProperties.suffix}
-          secondary={showFiat ? secondaryCurrencyDisplay : undefined}
-          tokenImage={balanceIsLoading ? null : primaryTokenImage}
-          identiconBorder
-        />
-        <TokenList
-          onTokenClick={(tokenAddress) => {
-            onClickAsset(tokenAddress);
-            trackEvent({
-              event: EVENT_NAMES.TOKEN_SCREEN_OPENED,
-              category: EVENT.CATEGORIES.NAVIGATION,
-              properties: {
-                token_symbol: primaryCurrencyProperties.suffix,
-                location: 'Home',
-              },
-            });
-          }}
-        />
-        {detectedTokens.length > 0 &&
-          !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
-            <DetectedTokensLink setShowDetectedTokens={setShowDetectedTokens} />
-          )}
-        {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
+      <div className="main-container-wrapper">
+        <div className="main-container">
+          <div className="home__container">
+            <div className="home__main-view">
+              <AssetListItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push(TRANSACTION_LIST_ROUTE);
+                }}
+                data-testid="wallet-balance"
+                primary={
+                  primaryCurrencyProperties.value ??
+                  secondaryCurrencyProperties.value
+                }
+                tokenSymbol={primaryCurrencyProperties.suffix}
+                secondary={showFiat ? secondaryCurrencyDisplay : undefined}
+                tokenImage={balanceIsLoading ? null : primaryTokenImage}
+                identiconBorder
+              />
+              <TokenList
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push(TRANSACTION_LIST_ROUTE);
+                }}
+              />
+              {detectedTokens.length > 0 &&
+                !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
+                  <DetectedTokensLink
+                    setShowDetectedTokens={setShowDetectedTokens}
+                  />
+                )}
+              {/* <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
         <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
           <Typography
             color={COLORS.TEXT_ALTERNATIVE}
@@ -124,16 +121,19 @@ const AssetList = ({ onClickAsset }) => {
         </Box>
         <ImportTokenLink />
       </Box> */}
-        {showDetectedTokens && (
-          <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
-        )}
+              {showDetectedTokens && (
+                <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
 AssetList.propTypes = {
-  onClickAsset: PropTypes.func.isRequired,
+  onClickAsset: PropTypes.func,
 };
 
 export default AssetList;

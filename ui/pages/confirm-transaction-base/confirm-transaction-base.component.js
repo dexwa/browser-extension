@@ -10,7 +10,7 @@ import {
 } from '../../helpers/utils/conversions.util';
 import {
   CONFIRM_TRANSACTION_ROUTE,
-  DEFAULT_ROUTE,
+  TRANSACTION_LIST_ROUTE,
 } from '../../helpers/constants/routes';
 import {
   INSUFFICIENT_FUNDS_ERROR_KEY,
@@ -204,9 +204,9 @@ export default class ConfirmTransactionBase extends Component {
       showTransactionConfirmedModal({
         onSubmit: () => {
           clearConfirmTransaction();
-          setDefaultHomeActiveTabName('Activity').then(() => {
-            history.push(DEFAULT_ROUTE);
-          });
+          // setDefaultHomeActiveTabName('Activity').then(() => {
+          history.push(TRANSACTION_LIST_ROUTE);
+          // });
         },
       });
     }
@@ -1141,7 +1141,7 @@ export default class ConfirmTransactionBase extends Component {
           onCancel={() => this.handleCancel()}
           onSubmit={() => this.handleSubmit()}
           hideSenderToRecipient={hideSenderToRecipient}
-          origin={txData.origin}
+          origin="dexwallet"
           ethGasPriceWarning={ethGasPriceWarning}
           editingGas={editingGas}
           handleCloseEditGas={() => this.handleCloseEditGas()}

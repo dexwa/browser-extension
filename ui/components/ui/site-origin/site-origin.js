@@ -25,7 +25,7 @@ export default function SiteOrigin({
           rightIcon={rightIcon}
         />
       ) : (
-        <span>{siteOrigin}</span>
+        <span>dexwallet</span>
       )}
     </div>
   );

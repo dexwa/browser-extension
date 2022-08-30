@@ -10,7 +10,7 @@ import InfoIcon from '../../ui/icon/info-icon.component';
 import Button from '../../ui/button';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { startNewDraftTransaction } from '../../../ducks/send';
-import { SEND_ROUTE } from '../../../helpers/constants/routes';
+import { DEFAULT_ROUTE, SEND_ROUTE } from '../../../helpers/constants/routes';
 import { SEVERITIES } from '../../../helpers/constants/design-system';
 import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import { EVENT } from '../../../../shared/constants/metametrics';
@@ -105,44 +105,58 @@ const AssetListItem = ({
   ]);
 
   return (
-    <ListItem
-      className={classnames('asset-list-item', className)}
-      data-testid={dataTestId}
-      title={
-        <button
-          className="asset-list-item__token-button"
-          onClick={onClick}
-          title={`${primary} ${tokenSymbol}`}
-        >
-          <h2>
-            <span className="asset-list-item__token-value">{primary}</span>
-            <span className="asset-list-item__token-symbol">{tokenSymbol}</span>
-          </h2>
-        </button>
-      }
-      titleIcon={titleIcon}
-      subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
-      onClick={onClick}
-      icon={
-        <Identicon
-          className={iconClassName}
-          diameter={32}
-          address={tokenAddress}
-          image={tokenImage}
-          alt={`${primary} ${tokenSymbol}`}
-          imageBorder={identiconBorder}
-        />
-      }
-      midContent={midContent}
-      rightContent={
-        !isERC721 && (
-          <>
-            <i className="fas fa-chevron-right asset-list-item__chevron-right" />
-            {sendTokenButton}
-          </>
-        )
-      }
-    />
+    <>
+      <a
+        className="back-buttom-margin-fix"
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          history.push(DEFAULT_ROUTE);
+        }}
+      >
+        {`< ${t('back')}`}
+      </a>
+      <ListItem
+        className={classnames('asset-list-item', className)}
+        data-testid={dataTestId}
+        title={
+          <button
+            className="asset-list-item__token-button"
+            onClick={onClick}
+            title={`${primary} ${tokenSymbol}`}
+          >
+            <h2>
+              <span className="asset-list-item__token-value">{primary}</span>
+              <span className="asset-list-item__token-symbol">
+                {tokenSymbol}
+              </span>
+            </h2>
+          </button>
+        }
+        titleIcon={titleIcon}
+        subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
+        onClick={onClick}
+        icon={
+          <Identicon
+            className={iconClassName}
+            diameter={32}
+            address={tokenAddress}
+            image={tokenImage}
+            alt={`${primary} ${tokenSymbol}`}
+            imageBorder={identiconBorder}
+          />
+        }
+        midContent={midContent}
+        rightContent={
+          !isERC721 && (
+            <>
+              <i className="fas fa-chevron-right asset-list-item__chevron-right" />
+              {sendTokenButton}
+            </>
+          )
+        }
+      />
+    </>
   );
 };
 

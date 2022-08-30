@@ -125,6 +125,7 @@ export default function TransactionList({
         <div className="home__container">
           <div className="home__main-view">
             <a
+              className="back-buttom-margin-fix"
               href="#"
               onClick={(e) => {
                 e.preventDefault();

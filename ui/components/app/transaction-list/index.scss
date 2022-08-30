@@ -33,6 +33,7 @@
 
   &__transactions {
     flex: 1;
+    position: relative;
   }
 
   &__pending-transactions {
@@ -57,4 +58,8 @@
     margin: 16px auto;
     max-width: 200px;
   }
+}
+
+.back-buttom-margin-fix {
+  margin: 10px 5px 10px 5px;
 }

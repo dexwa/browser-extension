@@ -17,7 +17,7 @@ import {
   SIGNATURE_REQUEST_PATH,
   DECRYPT_MESSAGE_REQUEST_PATH,
   ENCRYPTION_PUBLIC_KEY_REQUEST_PATH,
-  DEFAULT_ROUTE,
+  TRANSACTION_LIST_ROUTE,
 } from '../../helpers/constants/routes';
 import {
   disconnectGasFeeEstimatePoller,
@@ -135,9 +135,9 @@ export default class ConfirmTransaction extends Component {
       !transactionId &&
       !totalUnapprovedCount
     ) {
-      setDefaultHomeActiveTabName('Activity').then(() => {
-        history.replace(DEFAULT_ROUTE);
-      });
+      // setDefaultHomeActiveTabName('Activity').then(() => {
+      history.push(TRANSACTION_LIST_ROUTE);
+      // });
     } else if (
       prevProps.transactionId &&
       transactionId &&
