@@ -86,7 +86,6 @@ const AssetList = ({ onClickAsset }) => {
           {`< ${t('back')}`}
         </a>
         <AssetListItem
-          onClick={() => onClickAsset(nativeCurrency)}
           data-testid="wallet-balance"
           primary={
             primaryCurrencyProperties.value ?? secondaryCurrencyProperties.value

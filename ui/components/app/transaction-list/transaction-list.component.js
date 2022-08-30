@@ -120,82 +120,94 @@ export default function TransactionList({
   );
 
   return (
-    <div className="main-container">
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          history.push(DEFAULT_ROUTE);
-        }}
-      >
-        {`< ${t('back')}`}
-      </a>
-      <div className="transaction-list">
-        <div className="transaction-list__transactions">
-          {pendingTransactions.length > 0 && (
-            <div className="transaction-list__pending-transactions">
-              <div className="transaction-list__header">
-                {`${t('queue')} (${pendingTransactions.length})`}
-              </div>
-              {pendingTransactions.map((transactionGroup, index) =>
-                transactionGroup.initialTransaction.transactionType ===
-                TRANSACTION_TYPES.SMART ? (
-                  <SmartTransactionListItem
-                    isEarliestNonce={index === 0}
-                    smartTransaction={transactionGroup.initialTransaction}
-                    transactionGroup={transactionGroup}
-                    key={`${transactionGroup.nonce}:${index}`}
-                  />
-                ) : (
-                  <TransactionListItem
-                    isEarliestNonce={index === 0}
-                    transactionGroup={transactionGroup}
-                    key={`${transactionGroup.nonce}:${index}`}
-                  />
-                ),
-              )}
-            </div>
-          )}
-          <div className="transaction-list__completed-transactions">
-            {pendingTransactions.length > 0 ? (
-              <div className="transaction-list__header">{t('history')}</div>
-            ) : null}
-            {completedTransactions.length > 0 ? (
-              completedTransactions
-                .slice(0, limit)
-                .map((transactionGroup, index) =>
-                  transactionGroup.initialTransaction?.transactionType ===
-                  'smart' ? (
-                    <SmartTransactionListItem
-                      transactionGroup={transactionGroup}
-                      smartTransaction={transactionGroup.initialTransaction}
-                      key={`${transactionGroup.nonce}:${index}`}
-                    />
+    <div className="main-container-wrapper">
+      <div className="main-container">
+        <div className="home__container">
+          <div className="home__main-view">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                history.push(DEFAULT_ROUTE);
+              }}
+            >
+              {`< ${t('back')}`}
+            </a>
+            <div className="transaction-list">
+              <div className="transaction-list__transactions">
+                {pendingTransactions.length > 0 && (
+                  <div className="transaction-list__pending-transactions">
+                    <div className="transaction-list__header">
+                      {`${t('queue')} (${pendingTransactions.length})`}
+                    </div>
+                    {pendingTransactions.map((transactionGroup, index) =>
+                      transactionGroup.initialTransaction.transactionType ===
+                      TRANSACTION_TYPES.SMART ? (
+                        <SmartTransactionListItem
+                          isEarliestNonce={index === 0}
+                          smartTransaction={transactionGroup.initialTransaction}
+                          transactionGroup={transactionGroup}
+                          key={`${transactionGroup.nonce}:${index}`}
+                        />
+                      ) : (
+                        <TransactionListItem
+                          isEarliestNonce={index === 0}
+                          transactionGroup={transactionGroup}
+                          key={`${transactionGroup.nonce}:${index}`}
+                        />
+                      ),
+                    )}
+                  </div>
+                )}
+                <div className="transaction-list__completed-transactions">
+                  {pendingTransactions.length > 0 ? (
+                    <div className="transaction-list__header">
+                      {t('history')}
+                    </div>
+                  ) : null}
+                  {completedTransactions.length > 0 ? (
+                    completedTransactions
+                      .slice(0, limit)
+                      .map((transactionGroup, index) =>
+                        transactionGroup.initialTransaction?.transactionType ===
+                        'smart' ? (
+                          <SmartTransactionListItem
+                            transactionGroup={transactionGroup}
+                            smartTransaction={
+                              transactionGroup.initialTransaction
+                            }
+                            key={`${transactionGroup.nonce}:${index}`}
+                          />
+                        ) : (
+                          <TransactionListItem
+                            transactionGroup={transactionGroup}
+                            key={`${transactionGroup.nonce}:${
+                              limit + index - 10
+                            }`}
+                          />
+                        ),
+                      )
                   ) : (
-                    <TransactionListItem
-                      transactionGroup={transactionGroup}
-                      key={`${transactionGroup.nonce}:${limit + index - 10}`}
-                    />
-                  ),
-                )
-            ) : (
-              <div className="transaction-list__empty">
-                <div className="transaction-list__empty-text">
-                  {t('noTransactions')}
+                    <div className="transaction-list__empty">
+                      <div className="transaction-list__empty-text">
+                        {t('noTransactions')}
+                      </div>
+                    </div>
+                  )}
+                  {completedTransactions.length > limit && (
+                    <Button
+                      className="transaction-list__view-more"
+                      type="secondary"
+                      onClick={viewMore}
+                    >
+                      {t('viewMore')}
+                    </Button>
+                  )}
                 </div>
+                <EthButtonsOverview />
               </div>
-            )}
-            {completedTransactions.length > limit && (
-              <Button
-                className="transaction-list__view-more"
-                type="secondary"
-                onClick={viewMore}
-              >
-                {t('viewMore')}
-              </Button>
-            )}
+            </div>
           </div>
-          <EthButtonsOverview />
         </div>
       </div>
     </div>
