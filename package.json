@@ -1,10 +1,10 @@
 {
-  "name": "metamask-crx",
-  "version": "1.1.0",
+  "name": "dexwallet-crx",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/metamask-extension.git"
+    "url": "https://github.com/dexwa/browser-extension.git"
   },
   "scripts": {
     "setup": "yarn install && yarn setup:postinstall",

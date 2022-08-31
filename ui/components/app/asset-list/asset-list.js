@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import ImportTokenLink from '../import-token-link';
+import { useHistory } from 'react-router-dom';
 
 import TokenList from '../token-list';
 import AssetListItem from '../asset-list-item';
@@ -29,9 +30,14 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import DetectedToken from '../detected-token/detected-token';
 import DetectedTokensLink from './detetcted-tokens-link/detected-tokens-link';
+import {
+  SEND_ROUTE,
+  TRANSACTION_LIST_ROUTE,
+} from '../../../helpers/constants/routes';
 
 const AssetList = ({ onClickAsset }) => {
   const t = useI18nContext();
+  const history = useHistory();
 
   const [showDetectedTokens, setShowDetectedTokens] = useState(false);
 
@@ -78,7 +84,10 @@ const AssetList = ({ onClickAsset }) => {
           <div className="home__container">
             <div className="home__main-view">
               <AssetListItem
-                onClick={() => onClickAsset(nativeCurrency)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push(TRANSACTION_LIST_ROUTE);
+                }}
                 data-testid="wallet-balance"
                 primary={
                   primaryCurrencyProperties.value ??
@@ -90,16 +99,8 @@ const AssetList = ({ onClickAsset }) => {
                 identiconBorder
               />
               <TokenList
-                onTokenClick={(tokenAddress) => {
-                  onClickAsset(tokenAddress);
-                  trackEvent({
-                    event: EVENT_NAMES.TOKEN_SCREEN_OPENED,
-                    category: EVENT.CATEGORIES.NAVIGATION,
-                    properties: {
-                      token_symbol: primaryCurrencyProperties.suffix,
-                      location: 'Home',
-                    },
-                  });
+                onTokenClick={() => {
+                  history.push(SEND_ROUTE);
                 }}
               />
               {detectedTokens.length > 0 &&

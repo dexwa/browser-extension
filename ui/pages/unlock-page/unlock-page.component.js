@@ -6,10 +6,7 @@ import Button from '../../components/ui/button';
 import TextField from '../../components/ui/text-field';
 // import Mascot from '../../components/ui/mascot';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
-import {
-  EVENT,
-  EVENT_NAMES,
-} from '../../../shared/constants/metametrics';
+import { EVENT, EVENT_NAMES } from '../../../shared/constants/metametrics';
 
 export default class UnlockPage extends Component {
   static contextTypes = {
@@ -168,11 +165,11 @@ export default class UnlockPage extends Component {
       <div className="unlock-page__container">
         <div className="unlock-page">
           <div className="unlock-page__mascot-container">
-                      <img
-            src="./images/logo/metamask-fox.svg"
-            className="info-tab__logo"
-            alt="MetaMask Logo"
-          />
+            <img
+              src="./images/logo/metamask-fox.svg"
+              className="info-tab__logo"
+              alt="DexWallet Logo"
+            />
           </div>
           <h1 className="unlock-page__title">{t('welcomeBack')}</h1>
           <div>{t('unlockMessage')}</div>
